@@ -1,0 +1,55 @@
+body {
+    background-color: #e7ddff;
+    /* background-image: url(Split.jpg);
+    background-size: cover;
+    background-repeat: no-repeat; */
+
+    font-family: sans-serif;
+}
+
+.flex {
+    
+    display: flex;
+    gap: 12px;
+} 
+
+.container{
+    width: 400px;
+    margin: 50px auto;
+    text-align: center;
+}
+#result{
+    margin: 0;
+    font-size: 28px;
+}
+
+#heading{
+    margin: 01;
+    font-size: 25px;
+    text-align: center;
+}
+
+.btn{
+    background-color: #000000 ;
+    width: 100%;
+    color: white;
+    padding: 18px 30px;
+    border-radius: 12px;
+    /* border-color: #9EB8D9; */
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+input {
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 12px;
+    width: 50%;
+    border: 1px  solid lightgray;
+    margin-top: 5px;
+}
+
+input:focus{
+    outline: none;
+    border: 1pxs solid rgb(0, 128, 255);
+    }
