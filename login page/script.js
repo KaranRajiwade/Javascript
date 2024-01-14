@@ -9,31 +9,39 @@ let RegisterEmail = document.getElementById("registerEmail");
 let RegisterPassword = document.getElementById("registerPassword");
 let nameField = document.getElementById("nameField");
 let title = document.getElementById("title");
+let pTitle = document.getElementById("pageTitle");
 
 
 
 signinBtn.onclick = function(){
-    var Uname = document.getElementById("registerEmail").value;
+    var Uemail = document.getElementById("registerEmail").value;
     var Pword = document.getElementById("registerPassword").value;
 
-    //check if the required fields are empty or not
-    // if (!email || !Pword){
-    //     alert("Please enter both email and password.");
-    //     return;//Exit the function is empty
-    // }
+    
 
     //check if the username exists
-    var user = registeredUsers.find(user => user.username === Uname);
+    var user = registeredUsers.find(user => user.email === Uemail);
 
-    if (user && user.password === Pword) {
+    
+
+    if (!Uemail || !Pword){
+            // Check if the required fields are empty or not
+     
+        
+        // return; // Exit the function if fields are empty
+    }
+
+    else if (user && user.password === Pword) {
         alert("Login Sucessful");
     }
+
     else{
         alert("Invalid username or password");
     }
 
     nameField.style.maxHeight = "0";
     title.innerHTML = "Sign in";
+    pTitle.innerHTML = "Sign in";
     signupBtn.classList.add("disable");
     signinBtn.classList.remove("disable");
 
@@ -49,19 +57,16 @@ signupBtn.onclick = function(){
     var email = document.getElementById("registerEmail").value;
     var password = document.getElementById("registerPassword").value;
 
-    // check if the required fields are empty or not
-    // if (!username || !email || !password    ){
-    //     alert("Please fill in all the fields");
-    //     return;//Exit the function is empty
-    
-    // nameField.style.maxHeight = "60px";
-    // title.innerHTML = "Sign up";
-    // signupBtn.classList.remove("disable");
-    // signinBtn.classList.add("disable");
-    // }
-// else{
     //check if the Email already exists
-    if (registeredUsers.some(user => user.email === email))
+    
+
+    // Check if the required fields are empty or not
+    if (!username || !email || !password) {
+        
+        // return; // Exit the function if fields are empty
+    }
+
+    else if (registeredUsers.some(user => user.email === email))
     {
             alert("email already registered. Please choose a different one.");
     }
@@ -71,11 +76,12 @@ signupBtn.onclick = function(){
         registeredUsers.push({username: username, email:email , password: password});
         alert("Registered Sucessfully")
     }
-// }
+
 
 
     nameField.style.maxHeight = "60px";
     title.innerHTML = "Sign up";
+    pTitle.innerHTML = "Sign up";
     signupBtn.classList.remove("disable");
     signinBtn.classList.add("disable");
 
