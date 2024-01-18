@@ -13,26 +13,41 @@ let pTitle = document.getElementById("pageTitle");
 
 
 
-signinBtn.onclick = function(){
+
+
+
+
+function signinButtn(){
+    
     var Uemail = document.getElementById("registerEmail").value;
     var Pword = document.getElementById("registerPassword").value;
 
-    
+    function clearFormSin() {
+    // After the login attempt, clear the input fields
+    registerEmail.value = "";
+    registerPassword.value = "";
+    registerUsername.value = "";
+}
 
     //check if the username exists
     var user = registeredUsers.find(user => user.email === Uemail);
 
     
 
-    if (!Uemail || !Pword){
+    if (!Uemail && !Pword){
             // Check if the required fields are empty or not
-     
+            clearFormSin();
         
         // return; // Exit the function if fields are empty
     }
 
+    else if (!Uemail || !Pword){
+        alert("please fill all fields")
+    }
+
     else if (user && user.password === Pword) {
         alert("Login Sucessful");
+        clearFormSin();
     }
 
     else{
@@ -46,24 +61,33 @@ signinBtn.onclick = function(){
     signinBtn.classList.remove("disable");
 
 
-    // After the login attempt, clear the input fields
-    registerEmail.value = "";
-    registerPassword.value = "";
+    
 }
 
-signupBtn.onclick = function(){
+function signupButtn(){
 
     var username = document.getElementById("registerUsername").value;//value stores the value or content from the text field.
     var email = document.getElementById("registerEmail").value;
     var password = document.getElementById("registerPassword").value;
 
+    function clearFormSup() {
+    // After the login attempt, clear the input fields
+    registerUsername.value = "";
+    registerEmail.value = "";
+    registerPassword.value = "";
+}
+
     //check if the Email already exists
     
 
     // Check if the required fields are empty or not
-    if (!username || !email || !password) {
-        
+    if (!username && !email && !password) {
+        clearFormSup();
         // return; // Exit the function if fields are empty
+    }
+
+    else if (!username || !email || !password) {
+        alert("please fill all fields")
     }
 
     else if (registeredUsers.some(user => user.email === email))
@@ -75,6 +99,7 @@ signupBtn.onclick = function(){
         //store the new user
         registeredUsers.push({username: username, email:email , password: password});
         alert("Registered Sucessfully")
+        clearFormSup();
     }
 
 
@@ -85,8 +110,5 @@ signupBtn.onclick = function(){
     signupBtn.classList.remove("disable");
     signinBtn.classList.add("disable");
 
-    // After the login attempt, clear the input fields
-    registerUsername.value = "";
-    registerEmail.value = "";
-    registerPassword.value = "";
+    
 }
