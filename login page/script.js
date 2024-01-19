@@ -41,8 +41,15 @@ function signinButtn(){
         // return; // Exit the function if fields are empty
     }
 
-    else if (!Uemail || !Pword){
+
+    //       Uemail.value.trim() == "" || Pword.value.trim() ==""
+    else if (!Uemail || !Pword){//trim()will check if the entered values are not "balank spaces" entered by user,and if there are blank space it will clear screen & show alert message
         alert("please fill all fields")
+    }
+
+    else if (username.value == true) {
+        clearFormSin();
+        //if userName have some values in it which is not allowed at signIn for ex User name is not required at signIn so it will clear it
     }
 
     else if (user && user.password === Pword) {
@@ -77,11 +84,14 @@ function signupButtn(){
     registerPassword.value = "";
 }
 
-    //check if the Email already exists
-    
+    //check if the Email already exists    
+
+    if (!username) {
+        clearFormSup()
+    }
 
     // Check if the required fields are empty or not
-    if (!username && !email && !password) {
+    else if (!username && !email && !password) {
         clearFormSup();
         // return; // Exit the function if fields are empty
     }
@@ -89,7 +99,7 @@ function signupButtn(){
     else if (!username || !email || !password) {
         alert("please fill all fields")
     }
-
+    //check if the Email already exists
     else if (registeredUsers.some(user => user.email === email))
     {
             alert("email already registered. Please choose a different one.");
